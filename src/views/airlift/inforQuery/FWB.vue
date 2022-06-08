@@ -1,0 +1,129 @@
+<template>
+    <queryComponent pageName='单票总仓单(FWB)' :keyValue="tableList" :httpListUrl='listUrl' :httpDetailUrl='detailUrl' :tableHeader='tableHead' :childTable='tableChild' /> 
+</template>
+<script>
+import queryComponent from '_c/airQueryComponent'
+import interfaceUrl from '@/api/interfaceUrl'
+export default {
+    components:{queryComponent},
+    beforeMount(){
+        this.listUrl=interfaceUrl.queryFwbListByBillno
+        this.detailUrl=interfaceUrl.queryAllByMsgid
+    },
+    data(){
+        return{
+            listUrl:'',
+            detailUrl:'',
+            tableList:[
+                {key:"createtime",value:'报文传输时间'},
+                {key:"weight",value:'重量'},
+                {key:"numpieces",value:'件数'},
+                {key:"airportdestport",value:'机场/城市代码（目的地）'},
+                {key:"airportoriginport",value:'机场/城市代码（来源地）'},
+                {key:'billno',value:'主运单号'}
+            ],
+            //子表字段
+            tableChild:[
+               {key:'fltcarriercode',value:'FLT-航空器代码'},
+                {key:'flightnumber',value:'FLT-航班号'},
+                {key:'fltday',value:'FLT-日期'},
+                {key:'countrycode',value:'ISO国家代码'},
+                {key:'infoid',value:'信息标识符'},
+                {key:'othcharges',value:'预付/到付（其他费用）'},
+                {key:'othchargecode1',value:'其他费用项目代码-1'},
+                {key:'othenticode1',value:'其他补贴代码-1'},
+                {key:'othchargeamount1',value:'费用金额-1'},
+                {key:'othchargecode2',value:'其他费用项目代码-2'},
+                {key:'othenticode2',value:'其他补贴代码-2'},
+                {key:'othchargeamount2',value:'费用金额-2'},
+                {key:'othchargecode3',value:'其他费用项目代码-3'},
+                {key:'othenticode3',value:'其他补贴代码-3'},
+                {key:'othchargeamount3',value:'费用金额-3'},
+                {key:'rtdlinenum',value:'航线费率代码'},
+                {key:'rtdidentifierp',value:'运单列标识符'},
+                {key:'rtdpdetail',value:'货柜所允许装载的散货数量'},
+                {key:'rtdweightcode',value:'重量单位代码'},
+                {key:'rtdweight',value:'重量'},
+                {key:'rtdidentifierc',value:'运单列标识符-C'},
+                {key:'rtdratecode',value:'费率代码'},
+                {key:'rtdidentifierw',value:'AWB-列标识'},
+                {key:'rtdweightw',value:'重量'},
+                {key:'rtdidentifierr',value:'运单列标识符-R'},
+                {key:'rtdratecharge',value:'费率/费用'},
+                {key:'rtdidentifiert',value:'运单标识符-T'},
+                {key:'rtddisamount',value:'付费金额'},
+                {key:'rtdgidentifierg',value:'运单标识符-G'},
+                {key:'rtdggoods',value:'货物详细描述'},
+                {key:'rtdcidentifierc',value:'运单标识符-C'},
+                {key:'rtdcgoods',value:'货物描述-C'}
+
+            ],
+            //详情字段
+            tableHead:[
+                {key:'msgid',value:'消息编号'},
+                {key:'msgtype',value:'消息类型'},
+                {key:'msgversion',value:'消息版本'},
+                {key:'airlineprefix',value:'航线前缀'},
+                {key:'serialnumber',value:'货运单序列号'},
+                {key:'airportoriginport',value:'机场/城市代码（来源地）'},
+                {key:'airportdestport',value:'机场/城市代码（目的地）'},
+                {key:'shipmentcode',value:'货物描述代码（T）'},
+                {key:'numpieces',value:'件数'},
+                {key:'weightcode',value:'重量代码'},
+                {key:'weight',value:'重量'},
+                {key:'volcode',value:'体积代码'},
+                {key:'rtgid',value:'线路识别符（RTG）'},
+                {key:'rtgfirstcarrierdest',value:'第一目的地/航空器'},
+                {key:'rtgairportcode',value:'机场/城市代码'},
+                {key:'rtgcarriercode',value:'航空器代码'},
+                {key:'shpid',value:'线路识别符（SHP）'},
+                {key:'cneid',value:'线路识别符（CNE）'},
+                {key:'agtid',value:'AGT-线路识别符'},
+                {key:'agtcode',value:'AGT-账目号码'},
+                {key:'agtpartid',value:'AGT-参与者识别符'},
+                {key:'agtname',value:'AGT-名称'},
+                {key:'agtplace',value:'AGT-位置'},
+                {key:'nfyplace',value:'NFY-位置'},
+                {key:'cvdid',value:'CVD-线路识别符'},
+                {key:'cvdcurrcode',value:'CVD-ISO货币代码'},
+                {key:'cvdchargecode',value:'CVD-支付方式代码'},
+                {key:'cvdweightval',value:'预付/到付（重量/价格)'},
+                {key:'cvdothercharges',value:'预付/到付指标（其他费用）'},
+                {key:'cvddeccarriage',value:'为运输目的而申报的货物价值'},
+                {key:'cvddeccus',value:'为运输目的而确定的申报价格'},
+                {key:'cvdamount',value:'保险金额'},
+                {key:'ppdid',value:'PPD-航线识别'},
+                {key:'ppdidwt',value:'PPD-计重总费用'},
+                {key:'ppdwtamount',value:'PPD-WT-折扣金额'},
+                {key:'ppdidct',value:'PPD-CT-总金额'},
+                {key:'ppdctamount',value:'PPD-CT-折扣金额'},
+                {key:'cerid',value:'CER-线路识别符'},
+                {key:'cersign',value:'签名'},
+                {key:'isuid',value:'ISU-线路识别符'},
+                {key:'isuday',value:'ISU-天'},
+                {key:'isumonth',value:'ISU-月'},
+                {key:'isuyear',value:'ISU-年'},
+                {key:'isuplace',value:'ISU-地点'},
+                {key:'isusign',value:'ISU-签名'},
+                {key:'osiid',value:'OSI-线路识别符'},
+                {key:'osiinfo',value:'OSI-其他信息'},
+                {key:'refid',value:'REF-线路标识符'},
+                {key:'refaircode',value:'REF-机场/城市代码'},
+                {key:'refoffdesign',value:'REF-办公室职能代号'},
+                {key:'refcomcesign',value:'REF-公司代号'},
+                {key:'sphid',value:'SPH-线路识别符'},
+                {key:'ociid',value:'OCI-线路识别号'},
+                {key:'createtime',value:'报文传输时间'},
+
+            ]
+
+        }
+    }
+}
+</script>
+<style lang="scss" scoped>
+
+
+</style>
+
+

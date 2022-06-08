@@ -1,0 +1,592 @@
+<template>
+    <div class="map-contanier">
+        <!-- <div class="quarantine">
+            <span @click="quarantine([true,false])">[ 卫生检疫 ]</span>
+            <span @click="animalQuaren([true,true])">[ 会期动物疫情 ]</span>
+        </div> -->
+        <div class="map-footer">
+            <div v-show="getViewState[0]">
+                <ul class="area">
+                    <li v-for="ele in area" :key='ele.id' :class="{'active':ele.isActive}" @click="clickArea(ele.key)">{{ele.name}}</li>
+                </ul>
+                <div class="top">
+                    <p class="top-country">
+                        参展商最多: <span @click="changeSelected(95)">日本</span>  
+                    </p>
+                    <p class="top-country">
+                        价值总额最大: <span @click="changeSelected(62)">泰国</span>
+                    </p>
+                    <div class="slider">
+                        <ul class="slider_target">
+                            <li>最贵的展品——莱奥纳多直升机AW189</li>
+                            <li>最大的展品——金牛座龙门铣</li>
+                            <li>最有科幻色彩——"会飞的汽车"</li>
+                            <li>最有互动性——FORPHEUS乒乓球机器人</li>
+                            <li>服务最小消费者——NEONA婴儿核磁共振仪</li>
+                            <li>最奢华——粉钻高跟鞋</li>
+                            <li>最萌——乐高版"进宝"</li>
+                            <li>最大展位——台湾友嘉"2500"平米</li>
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+            <div v-show="!getViewState[0]" class="type">
+                <span v-for="(item,index) in goodsType" :class="{active:item.isActive}" :key="item.id" @click="goodsTypeF(item.key,index)">{{item.name}}</span>
+                <span class="goodsType">商品种类</span>
+                <a href="javascript:void(0)" @click="switchView([true,true],true)">关闭</a>
+            </div>
+            
+        </div>
+         <div id='chart' style="width:100%;height:90%" ></div>
+    </div>
+</template>
+<script>
+let echarts = require('echarts/lib/echarts');
+import Slider from './self_slider.js'
+import regionTable from '@/until/corresponding'
+import {publicInter} from '@/api/http'
+import interfaceUrl from '@/api/interfaceUrl'
+import {mapGetters,mapActions,mapMutations} from 'vuex'
+export default {
+    computed:{
+        ...mapGetters('exhibitionStore', [
+            'getViewState',
+            'getFranchiseGoods',
+            'getFranchiseGoodsRegion'
+        ])
+    },
+    data(){
+        return{
+            regionCountry:{
+                //亚洲
+                AS:[],
+                //非洲
+                AF:[],
+                //南美
+                SA:[],
+                // 北美
+                NA:[],
+                //欧洲
+                EU:[],
+                //大洋洲
+                OC:[],
+                //一带一路,
+                B$R:[],
+                C$E:[],
+            },
+            options:{ 
+                tooltip : {
+                    trigger: 'item',
+                    showDelay: 0,
+                    hideDelay: 0,
+                    enterable: true,
+                    show:false,
+                    padding:16,
+                    showContent:true,
+                    transitionDuration: 0,
+                    extraCssText: 'z-index:100',
+                }, 
+                series: [
+                    {
+                    type: 'map',
+                    map: 'world',
+                    zoom:'1.2',
+                    roam:true,
+                    label:{
+                        emphasis:{
+                            show:true,
+                            color:'rgba(0,0,0,0)',
+                        }
+                    },
+                     itemStyle:{
+                         normal:{
+                            borderColor: '#0078AD',
+                            color:'#fff',
+                            borderWidth:1.1,
+                            areaColor: '#002F99',
+                        },
+                        emphasis:{
+                            areaColor:'#FFDE1D',
+                            color:'#fff',
+                        }
+                    },
+                    tooltip:{
+                        backgroundColor:'rgba(14,23,84,0.80)',
+                        borderColor:'#0989EB',
+                        borderWidth:'1',
+                        extraCssText:'box-shadow: 0 3px 5px 0 rgba(0,0,0,0.75), inset 0 0 8px 0 rgba(6,185,255,0.90)',
+                        showContent:true,
+                        formatter:function(params){
+                            if(params.data&&params.data['nameCH']){
+                                var str=''
+                                if(params.data.sickNum){
+                                     str='<div style="text-align:center">'+params.data['nameCH']+'<br>'+params.data.sickNum+'</div>' 
+                                }else if(params.data.mouthSick){
+                                    var thead='<table style="width:100%;text-align:center"><thead><tr><td style="text-align:left">疫名</td><td>确诊人数</td></tr></thead><tbody>'
+                                    var tr=''
+                                    params.data.data.forEach(item=>{
+                                        tr+='<tr><td style="text-align:left">'+item.EPDIMIC_NAME+'</td><td>'+item.COMFIRMED+'</td></tr>'
+                                    })
+                                    tr+='</tbody></table>'
+                                    str='<div>国家名：'+params.data['nameCH']+'</div>'+thead+tr
+                                }else{
+                                    var s=''
+                                    params.data.VIRUS.forEach(item=>{
+                                        s+='<br>疫名：'+item 
+                                    })
+                                     str='<div>国家名：'+params.data['nameCH']+s+'</div>' 
+                                }
+                                return str
+                                
+                            }
+                             
+                        }
+                    },
+                    data:[]
+
+                }]
+            },
+            goodsType:[],
+            charts:'',
+            area:[
+                {
+                    isActive:false,
+                    name:'亚洲',
+                    key:'AS'
+                },
+                {
+                    isActive:false,
+                    name:'欧洲',
+                    key:'EU'
+                },
+                {
+                    isActive:false,
+                    name:'南美洲',
+                    key:'SA'
+                },
+                {
+                    isActive:false,
+                    name:'北美洲',
+                    key:'NA'
+                },
+                {
+                    isActive:false,
+                    name:'大洋洲',
+                    key:'OC'
+                },
+                {
+                    isActive:false,
+                    name:'非洲',
+                    key:'AF'
+                },
+                // {
+                //     isActive:false,
+                //     name:'国家馆',
+                //     key:'C$E'
+                // },
+                {
+                    isActive:false,
+                    name:'一带一路国家/地区',
+                    key:'B$R'
+                },
+                
+
+            ],
+            timer:null,
+            counter:0
+        }
+    },
+    mounted(){
+        var echartsBox=document.getElementById('chart');
+        this.charts=echarts.init(echartsBox);
+        this.sliderInit();
+        this.getcountry();
+        this.initMap();
+        this.mapEvent();
+        // this.initGoodsType();
+    },
+    methods:{
+         ...mapMutations('exhibitionStore',[
+            'viewChange',
+            'changeSelected'
+        ]),
+        /**
+         * 最字榜滚动初始化
+         */
+        sliderInit(){
+            var target=document.getElementsByClassName('slider_target')[0];
+            var slider=new Slider({target:target});
+        },
+        /**
+         *切换视图 
+         */
+        switchView (state,reset) {
+            this.viewChange(state)
+            if(reset){
+                let code=this.$store.state.exhibitionStore.selectedRegion
+                // this.changeSelected(code)
+                this.clearMap();
+            }
+        },
+        /**
+         *获得地图option.data
+         */
+        getMapOptionData(){
+            return this.options.series[0]['data'];
+        },
+        /**
+         * 设置地图option.data
+         */
+        setMapOptionData(data){
+            this.options.series[0]['data']=data
+            this.charts.setOption(this.options,true);
+        },
+        /**
+         * 获取各个区域有哪些国家
+        */
+        getcountry(){
+            var dataKey=[
+                {key:'listFeiZhou',value:'AF'},
+                {key:'listBeiMei',value:'NA'},
+                {key:'listDaYangZhou',value:'OC'},
+                {key:'listNanMei',value:'SA'},
+                {key:'listOuZhou',value:'EU'},
+                {key:'listYaZhou',value:'AS'},
+                {key:'listYiDaiYiLu',value:'B$R'},
+                {key:'listGuoJiaGuan',value:'C$E'}
+                ]
+            publicInter(interfaceUrl.getCounInfoByParam,{}).then(r=>{
+                if(r.code==='200'){
+                    dataKey.forEach(item=>{
+                        r[item.key].forEach(val=>{
+                            var arr=this.regionCountry[item.value]
+                            arr.push(val.CODE)
+                        })
+                    }) 
+                }
+            })
+        },
+        /**
+         * 初始化地图
+        */
+        initMap(){
+            var data=[]
+            regionTable.forEach((item,i)=>{
+                data.push({
+                    name:item.name,
+                    value:item.value,
+                    selected:false,
+                    nameCh:item.nameCH
+                })
+            })
+            this.setMapOptionData(data)
+            
+           
+        },
+        /**
+         * 给地图添加事件绑定
+        */
+        mapEvent(){
+            const _this=this;
+            this.charts.on('click',function(params){
+                _this.clearMap();
+                let data=_this.getMapOptionData();
+                data.forEach(item=>{
+                    if(item.value===params.value){
+                        item['selected']=true
+                    }else{
+                        item['selected']=false
+                    }
+                })
+                _this.area.forEach(item=>{
+                    item.isActive=false
+                })
+                _this.changeSelected(params.value);
+                _this.setMapOptionData(data)
+            })
+            this.charts.on('mouseover',function(params){
+                // console.log
+                clearInterval(_this.timer)
+                _this.timer=null;
+            })
+            this.charts.on('globalout',function(params){
+                _this.ligthRegionFun([],true)
+            })
+
+        },
+        /**
+         * 点击检疫视图切换
+        */
+        quarantine(state){
+            this.viewChange(state)
+            this.clearMap()
+        },
+        /**
+         * 清楚地图上的高亮区域，清除定时器，tooltip变成不显示
+        */
+        clearMap(){
+            clearInterval(this.timer)
+            this.timer=null;
+            this.counter=0
+            this.options.tooltip.show=false
+            this.initMap();
+
+        },
+        /**
+         * 动物疫情
+        */
+        animalQuaren(state){
+            this.clearMap();
+            publicInter(interfaceUrl.queryAnimalEpidemic,{countryCode:""}).then(r=>{
+                if(r.code==='200'){
+                    var animalVirus=[];
+                    r.data.forEach(item=>{
+                        var virus=item.epidemic
+                        regionTable.forEach(val=>{
+                            if(val.value==item.CODE){
+                                var arr=[]
+                                virus.forEach(val2=>{
+                                    arr.push(val2.VIRUS)
+                                })
+                                animalVirus.push({
+                                    VIRUS:arr,
+                                    name:val.name,
+                                    nameCH:val.nameCH,
+                                    selected:true
+                                })
+                            }
+                        })
+                        
+                    })
+                    this.ligthRegionFun(animalVirus)  
+                }
+            })
+
+        },
+        clickArea(key){
+            this.changeSelected(key);
+            clearInterval(this.timer)
+            this.timer=null;
+            this.initMap();
+            var data=this.getMapOptionData()
+            data.forEach(item=>{
+                this.regionCountry[key].forEach(ele=>{
+                    if(ele==item.value){
+                        item.selected=true
+                    }
+                })
+            })
+            this.setMapOptionData(data)
+            this.area.forEach(item=>{
+                if(item.key===key){
+                    item.isActive=true
+                }else{
+                    item.isActive=false
+                }
+            })
+        },
+        initGoodsType(){
+            var data=this.$store.state.exhibitionStore.franchiseGoods;
+            this.goodsType=[];
+            data.forEach(item=>{
+                this.goodsType.push(
+                    {isActive:false,name:item.name,key:item.key}
+                )
+            })
+        },
+        goodsTypeF(key,index){
+            let ligthRegionData=this.getFranchiseGoodsRegion
+            // console.log()
+            this.ligthRegionFun(ligthRegionData[key])
+            this.goodsType.forEach((item,i)=>{
+                if(i===index){
+                    item.isActive=true
+                }else{
+                    item.isActive=false
+                }
+            })
+        },
+        ligthRegionFun(arr,isLast){
+            var showData=[];
+            if(!isLast){
+                showData=arr
+            }else{
+                showData=this.getMapOptionData();
+            }
+            if(showData.length<=0){return false}
+            const that = this
+            this.initMap();
+            this.options.tooltip.show=true
+            this.setMapOptionData(showData)
+            var len=showData.length
+            this.timer=setInterval(()=>{
+                if(that.counter<3*len-1){
+                     that.charts.dispatchAction({
+                        type: 'showTip',
+                        seriesIndex:0,//第几条series
+                        dataIndex:that.counter%len,//第几个tooltip
+                    });
+                    that.counter++
+                }else{
+                    that.counter=0
+                    that.timer=null
+                    clearInterval(that.timer)
+                    
+                }
+                // console.log(that.timer)
+            },3000)
+
+        }
+    }
+    
+}
+</script>
+<style lang="scss" scoped>
+.map-contanier{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url('../../../../assets/mapbg.png') 50% 50% no-repeat;
+    background-size: 100%;
+    .quarantine{
+        position: absolute;
+        left: 5%;
+        top: 3%;
+        z-index: 10;
+        span{
+            font-size: .9rem;
+            cursor: pointer;
+            color: #0070F7;
+            font-weight: 600;
+            &:last-child{
+                margin-left: 1.5rem;
+            }
+            
+        }
+    }
+    .map-footer{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 1% 1%;
+        width: 100%;
+        z-index: 10;
+        ul.area{
+            position: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            li{
+                cursor: pointer;
+                font-size: 1rem;
+                color: #fff;
+                padding: .3rem .8rem;
+                background: url('../../../../assets/sandbarD.png') 100% 100% no-repeat;
+                background-size: cover;
+                 &.active,&:hover{
+                    color: #000;
+                    background: url('../../../../assets/sandbarH.png') 100% 100% no-repeat;  
+                }
+            }
+        }
+        .top{
+            display: flex;
+            width: 100%;
+            margin-top: 1rem;
+            justify-content: flex-start;
+            align-items: center;
+            padding: .5rem 0;
+            border-top: 1px solid #0037B2;
+            >p.top-country{
+                &:first-child{
+                    margin-right: 1rem;
+                }
+                width: 10rem;
+                font-size: .9rem;
+                color: #fff;
+                border-right: 1px solid #0037B2;
+                span{
+                    color: #FFDE1D;
+                    cursor: pointer;
+                }
+
+            }
+             >div.slider{
+                width: calc(100% - 21rem);
+                overflow: hidden;
+                ul{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    // width: 176rem;
+                    list-style: none;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    transition: all 0.1s ease-out;
+                    li{
+                        font-size: .9rem;
+                        color: #fff;
+                        padding:0 1rem;
+                        white-space: nowrap;
+                        // width: 22rem;
+                        border-right: 1px solid #0037B2;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+
+                    }
+                }
+
+            }
+        }
+         .type{
+            margin-bottom:2%; 
+            background: rgba(14,23,84,0.90);
+            border: 1px solid #1DA9FF;
+            padding: .8rem;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: inset 0 0 8px 0 rgba(41,112,255,0.80); 
+            >span{
+                font-size:1rem;
+                color: #fff;
+                cursor: pointer;
+                margin-right: 1rem;
+                &.active{
+                    color: #FFDE1D;
+                }
+                &.goodsType{
+                    position: absolute;
+                    right: -1px;
+                    width: 113px;
+                    height: 43px;
+                    margin-right: 0;
+                    background: #0E1754;
+                    border: 1px solid #1DA9FF;
+                    border-top-left-radius: 6px;
+                    border-top-right-radius: 6px;
+                    border-bottom: 0;
+                    top: -45px;
+                    line-height: 43px;
+                    text-align: center;
+                    box-shadow: inset 0 0 8px 0 rgba(41,112,255,0.80);
+                }
+            }
+            >a{
+                position: absolute;
+                height: 100%;
+                right: 0;
+                padding: 0 1rem;
+                font-size: .9rem;
+                display: flex;
+                align-items: center;
+                border-left: 1px solid #2970FF;
+                top: 0;
+            }
+        }
+    }
+}
+
+</style>

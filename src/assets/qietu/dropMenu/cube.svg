@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="18px" viewBox="0 0 15 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>cube</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#14E1F9" offset="0%"></stop>
+            <stop stop-color="#0026BD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#14E1F9" offset="0%"></stop>
+            <stop stop-color="#0026BD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.4860847%" y1="93.8496235%" x2="50%" y2="3.061617e-15%" id="linearGradient-3">
+            <stop stop-color="#148CF9" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#0026BD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="下拉菜单" transform="translate(-272.000000, -124.000000)">
+            <g transform="translate(0.000000, -12.000000)" id="content">
+                <g transform="translate(272.000000, 124.000000)">
+                    <g id="大数据展示" transform="translate(0.000000, 5.000000)">
+                        <g id="cube" transform="translate(0.000000, 7.000000)">
+                            <polygon id="Stroke-1" fill="url(#linearGradient-1)" points="14.4585776 3.93730939 14.4585776 3.9388951 7.23012931 7.87461878 7.22844828 7.87461878 1.0658141e-13 3.9388951 1.0658141e-13 3.93730939 3.61422414 1.96944755 7.22844828 0.00158570656 7.22844828 3.90798505e-14 7.23012931 3.90798505e-14 10.8443534 1.96944755"></polygon>
+                            <polygon id="Stroke-1" fill="url(#linearGradient-2)" points="14.4585776 3.9642664 14.4585776 13.4116101 7.23012931 17.3473338 7.22844828 7.89999009"></polygon>
+                            <polygon id="Stroke-1-Copy" fill="url(#linearGradient-3)" transform="translate(3.615065, 10.655800) scale(-1, 1) translate(-3.615065, -10.655800) " points="7.23012931 3.9642664 7.23012931 13.4116101 0.00168103448 17.3473338 -9.18376486e-13 7.89999009"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

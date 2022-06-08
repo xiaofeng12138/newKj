@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>button-nav-close</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="下拉菜单" transform="translate(-1885.000000, -16.000000)" fill="#FFFFFF">
+            <g id="button-nav-close" transform="translate(1868.000000, 0.000000)">
+                <g transform="translate(26.000000, 26.000000) rotate(-315.000000) translate(-26.000000, -26.000000) translate(14.000000, 14.000000)">
+                    <path d="M1.3,10.4 L22.1,10.4 C22.8179702,10.4 23.4,10.9820298 23.4,11.7 C23.4,12.4179702 22.8179702,13 22.1,13 L1.3,13 C0.582029825,13 -2.29522188e-11,12.4179702 -2.29523067e-11,11.7 C-2.29523946e-11,10.9820298 0.582029825,10.4 1.3,10.4 Z" id="矩形-copy-9" transform="translate(11.700000, 11.700000) rotate(-90.000000) translate(-11.700000, -11.700000) "></path>
+                    <rect id="矩形-copy-10" x="0" y="10.4" width="23.4" height="2.6" rx="1.3"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

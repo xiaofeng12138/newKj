@@ -1,0 +1,62 @@
+
+
+{
+    
+	"simpleValiter":{
+		"classify":[
+			{"name":"宠物食品","value":"a"},
+			{"name":"水果","value":"b"},
+			{"name":"粮谷","value":"c"},
+			{"name":"烟草","value":"d"},
+            {"name":"水生动物","value":"e"}
+        ],
+        
+        "keyValue":{
+            "a":[
+                {"name":"France","nameCH":"法国","selected":true,"sickNum":2},
+                {"name":"Thailand","nameCH":"泰国","selected":true,"sickNum":1}
+            ],
+            "b":[
+                {"name":"United Kingdom","nameCH":"英国","selected":true,"sickNum":1},
+                {"name":"Dominican Rep.","nameCH":"多米尼加","selected":true,"sickNum":3},
+                {"name":"Indonesia","nameCH":"印度尼西亚","selected":true,"sickNum":1},
+                {"name":"Netherlands","nameCH":"荷兰","selected":true,"sickNum":2},
+                {"name":"Australia","nameCH":"澳大利亚","selected":true,"sickNum":4},
+                {"name":"Panama","nameCH":"巴拿马","selected":true,"sickNum":1}
+                
+            ],
+            "c":[
+                {"name":"Dominican Rep.","nameCH":"多米尼加","selected":true,"sickNum":1}
+            ],
+            "d":[],
+            "e":[]
+        }
+		
+	},
+	"disCount":{
+		"dateData": ["2018-11-01","2018-11-02","2018-11-03","2018-11-04", "2018-11-05", "2018-11-06", "2018-11-07", "2018-11-08", "2018-11-09", "2018-11-10","2018-11-11"],
+                "barData" : ["6","8","21","32","30","16", "25","18","6","5","12"],
+                "lineData" : ["0","0","0","0", "4","1", "0","2","0","0","0"]
+    },
+    "foodSpec":[
+        {"country":"西班牙","name":"冰鲜(去骨)猪肉","weight":"89","unity":"千克","fun":"特许审批"},
+        {"country":"德国","name":"冷冻(去骨)猪肉","weight":"80","unity":"千克","fun":"特许审批"},
+        {"country":"德国","name":"冷冻(去骨)猪肉","weight":"190","unity":"千克","fun":"特许审批"},
+        {"country":"澳大利亚","name":"冷冻(带骨)绵羊肉","weight":"89","unity":"千克","fun":"特许审批"},
+        {"country":"西班牙","name":"冷冻(去骨)猪肉","weight":"115","unity":"千克","fun":"特许审批"},
+        {"country":"马来西亚","name":"白燕盏(屋燕)","weight":"3.59","unity":"千克","fun":"特许审批"},
+        {"country":"玻利维亚","name":"冷冻(去骨)牛肉","weight":"150","unity":"千克","fun":"特许审批"},
+        {"country":"玻利维亚","name":"冷冻(带骨)牛肉","weight":"150","unity":"千克","fun":"特许审批"},
+        {"country":"哈萨克斯坦","name":"冷冻(去骨)牛肉","weight":"18","unity":"千克","fun":"特许审批"},
+        {"country":"哈萨克斯坦","name":"冷冻(带骨骨)牛肉","weight":"18","unity":"千克","fun":"特许审批"}
+
+    ],
+    "count":"16",
+    "foodComm":[
+        {"country":"新西兰","name":"冷冻(带骨)鹿肉","weight":"5","unity":"千克","fun":"一般审批"},
+        {"country":"新西兰","name":"冷冻(去骨)鹿肉","weight":"10","unity":"千克","fun":"一般审批"}
+        
+    ]
+    	
+	
+}

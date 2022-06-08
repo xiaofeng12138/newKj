@@ -1,0 +1,762 @@
+//滚动条
+@mixin thumb {
+    &::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #6e6e6e;
+        outline: #333 solid 1px;
+        border-radius: 20px;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    }
+}
+@mixin  littleTitle {
+    font-size: 1.2rem;
+    text-align: left;
+    line-height: 42px;
+    margin:0 18px;
+    border-bottom: 1px solid #0037B2;
+    width: calc(100% - 40px);
+    position: relative;
+    display: inline-block;
+    color: #fff
+}
+
+//大屏2分页的样式
+@mixin breakPage {
+    position: absolute;
+    display: inline-block;
+    right: 0px;
+    .ivu-icon{
+        width: 24px;
+        height: 24px;
+        color: #104DFF;
+        border: 2px solid #104DFF;
+        border-radius: 2px;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .ivu-icon:hover{
+        color:#18EBFF;
+        border: 2px solid #18EBFF;
+    }
+    .pageDisabled{
+        cursor: not-allowed;
+    }
+}
+html{
+    &.xxl{
+        font-size: 22px;
+    }
+    &.xl{
+        font-size: 20px;
+    }
+    &.l{
+        font-size: 18px;
+    }
+    &.m{
+        font-size: 12px;
+    }
+    &.s{
+        font-size: 10px;
+    }   
+}
+.self {
+    overflow: visible
+}
+.ivu-carousel.coutom-carousel{
+    height: 100%;
+
+    .ivu-carousel-list{
+        width: calc(100% - 15px);
+    }
+    .ivu-carousel-arrow{
+        &.right{
+            right: 0;
+        }
+        &.left{
+            left: 0;
+        }
+    }
+    div{
+        height: 100% !important;
+
+    }
+}
+.customModal{
+    .ivu-modal-header{
+        border-bottom: 0;
+    }
+    .ivu-modal-footer,.ivu-modal-body{
+        padding: 0 !important;
+        border: 0 !important;
+    }
+    
+}
+.ivu-icon-ios-close:before {
+    // color: #fff
+  }
+  .ivu-modal-body::after {
+      clear: both;
+      display: block;
+      content: '';
+      height: 0;
+      visibility: hidden;
+  }
+.customFormItem{
+    
+    .ivu-form-item-content{
+        display: flex;
+        align-items: center;
+        .validateCode{
+            width: 70%;
+        }
+        .right-img{
+            width: 30%;
+            height: 36px;
+        }
+
+    }
+
+}
+
+.call-record {
+    .ivu-form-item-label {
+        color: #fff;
+        font-size: 1rem;
+    }
+}
+.zmh-table {
+    .ivu-table {
+        font-size: 12px
+    }
+}
+.ivu-table {
+    font-size: 0.875rem
+}
+.dockingOfShips-add-table {
+    .ivu-table-body {
+        .ivu-table-cell {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            .ivu-input {
+                height: 100%;
+                border: 0;
+                text-indent: 18px;
+                padding: 0
+            }
+        }
+    }
+    
+}
+.customInput{
+    
+    .ivu-input-group-prepend{
+        background: transparent;
+        border: 0;
+        i{
+            font-size: 1rem;
+        }
+    } 
+    &.ivu-input-group{
+        top:0;
+    }
+    &.noBorder{
+        input.ivu-input{
+            border: 0;
+        }
+        &:focus{
+            outline: none;
+            border: 0;
+            box-shadow: none;
+        }
+       
+    }
+    input.ivu-input{
+        background: transparent !important;
+        color: #fff;
+        
+        &::-webkit-input-placeholder{
+            color: rgba(255,255,255,.6);
+        }
+        
+    }
+    .customSelect{
+        position: relative;
+        /* border-radius: 4px; */
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border: 1px solid #dcdee2;
+        width: 100px;
+        border-right: 0;
+        top: -1px;
+        right: -4px;
+        &:hover{
+            border-color: #57a3f3;
+        }
+    }
+   
+}
+
+.customDropMenu{
+    >div{
+        // top:3px;
+    }
+    .ivu-select-dropdown{
+        background: #0c1435;
+        border: 1px solid #155ff2;
+        
+        .ivu-dropdown-item{
+            color: #fff;
+            font-size: 14px !important;
+            &:hover{
+                background: #155ff2;
+                
+            }
+            &.active{
+                background: #155ff2;
+                
+            }
+            a{
+                color: #fff;
+            }
+
+        }
+    }
+}
+.mainScreen-dropdown {
+    a{
+        color: #fff ;
+    }
+    .ivu-select-dropdown{
+        background: #0c1435;
+        
+        .ivu-dropdown-item{
+            color: #fff;
+            font-size: 14px !important;
+            &:hover{
+                background: #155ff2;
+                
+            }
+            &.active{
+                background: #155ff2;
+                
+            }
+            
+
+        }
+    }
+}
+.customTabs{
+    &.center{
+        .ivu-tabs-nav{
+            // float: none;
+        }
+        
+        .ivu-tabs-tab{
+            color: rgba(255,255,255,.6);
+            position: relative;
+            &:hover{
+                color: #fff;
+
+            }
+            &.ivu-tabs-tab-active{
+                color: #fff;
+                &::before{
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 3px;
+                    left: 0;
+                    bottom: 0px;
+                    background: #155ff2;
+    
+                }
+            }
+        }
+        
+        .ivu-tabs-ink-bar{
+           display: none;
+        }
+
+    }
+
+    .ivu-tabs-tab{
+        color: #fff;
+        &:hover{
+            color: #155ff2;
+        }
+        &.ivu-tabs-tab-active{
+            color: #155ff2
+        }
+    }
+}
+.list-flow {
+    .ivu-modal-content {
+        background-color: #121e4f
+    }
+}
+.agentCencus {
+    .ivu-tabs-nav-scroll {
+        display: inline-block
+    }
+    .ivu-tabs-nav-wrap {
+        text-align: center
+    }
+    .ivu-tabs-nav {
+        font-size: 18px
+    }
+    
+}
+.agentCencus1 {
+    .ivu-tabs-nav-scroll {
+        display: inline-block
+    }
+    .ivu-tabs-nav-wrap {
+        text-align: center;
+    }
+    // .ivu-tabs-bar {
+    //     border-bottom: none;
+    // }
+    .ivu-tabs-nav {
+        font-size: 18px
+    }
+    .ivu-tabs-tab-active {
+        color: #fff
+    }
+    .ivu-tabs-ink-bar {
+        top: auto
+    }
+}
+.customDropMenu{
+    .ivu-btn-large {
+        font-size: 0.875rem;
+        padding: 0px 10px 0px 10px
+    }
+    
+}
+.detailZWModal {
+    .ivu-modal-header {
+        border-bottom: none;
+    }
+    .ivu-modal-content {
+        background: rgba(4, 8, 21, 1)
+    }
+}
+.flow-commod-modal {
+    .ivu-modal-body {
+        padding-top: 0;
+        padding-bottom: 50px
+    }
+    .ivu-modal-content {
+        border: 1px solid #1f5ff2;
+        background: #0c1435
+    }
+    .ivu-modal-header {
+        border: none
+    }
+    .ivu-icon-ios-close:before {
+        color: #fff
+    }
+}
+.consult-modal {
+    // .ivu-modal {
+    //     background: linear-gradient(135deg, transparent 50px, #0c1435 0) top left,
+    //                 linear-gradient(-135deg, transparent 50px, #0c1435 0) top right,
+    //                 linear-gradient(45deg, transparent 50px, #0c1435 0) bottom left,
+    //                 linear-gradient(-45deg, transparent 50px, #0c1435 0) bottom right
+    // }
+    .ivu-modal-body {
+        padding-top: 0;
+        padding-bottom: 50px
+    }
+    .ivu-modal-content {
+        border: 1px solid #1f5ff2;
+        background: #0c1435;
+        background: linear-gradient(135deg, transparent 50px, #0c1435 0) top left,
+    //                 linear-gradient(-135deg, transparent 50px, #0c1435 0) top right,
+    //                 linear-gradient(45deg, transparent 50px, #0c1435 0) bottom left,
+    //                 linear-gradient(-45deg, transparent 50px, #0c1435 0) bottom right
+    }
+    .ivu-modal-header {
+        border: none
+    }
+    .ivu-icon-ios-close:before {
+        color: #fff
+    }
+}
+.customTable{
+    border: 1px solid #155ff2;
+    border-bottom: 0;
+    border-right: 0;
+    .ivu-table:after,.ivu-table::before{
+        background-color:#155ff2; 
+    }
+    .ivu-table td, .ivu-table th {
+        border-bottom: none
+    }
+    .ivu-table th{
+        background: rgb(23,65,166);
+        color: #fff;
+        border-right: 1px solid rgba(255,255,255,0.5);
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+        &:last-child{
+            // border-right: 0;
+        }
+    }
+    &.small{
+        .ivu-table-overflowX{
+            max-height: 45vh;
+        }
+
+    }
+    &.tiny-small{
+        .ivu-table-overflowX{
+            max-height: 28vh;
+        }
+
+    }
+    .ivu-table-overflowX{
+        max-height: 50vh;
+        overflow: auto;
+
+    }
+    
+    .ivu-table-tbody{
+        td{
+            color: #fff;
+            border-left:1px solid rgba(255,255,255,0.5);
+            &:first-child{
+                border-left: 0;
+            } 
+        }
+        tr:nth-child(odd){
+            td{background: #0c1435;}
+        }
+        tr:nth-child(even){
+            td{ background: rgb(23,31,63);}
+        }
+    }
+    .ivu-table-overflowX,.ivu-table-tip{
+        &::-webkit-scrollbar {
+            height: 14px;
+            width: 14px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #6e6e6e;
+            outline: #333 solid 1px;
+            border-radius: 20px;
+        }
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        }
+
+    }
+   
+}
+.customDatePicker{ 
+    input{
+        background: transparent;
+        color: #fff;
+    }
+}
+.myIndex  {
+        .ivu-table-wrapper {
+            overflow: visible;
+        }
+    
+}
+.materialLift {
+    .ivu-table-wrapper {
+        overflow: visible;
+    }
+}
+
+.customSelect{
+    .ivu-select-selection{
+        background: transparent;
+        color: #fff;
+    }
+    .ivu-select-dropdown{
+        background: #0c1435;
+        border: 1px solid #155ff2;
+        
+        .ivu-select-item{
+            color: #fff;
+            font-size: 14px !important;
+            &.ivu-select-item-selected{
+                background: #155ff2;
+            }
+            &:hover{
+                background: #155ff2;
+                
+            }
+
+        }
+    }
+}
+.customSelectt{
+    .ivu-select-selection{
+        background: transparent;
+        color: #fff;
+        border: none
+    }
+    .ivu-select-dropdown{
+        background: #0c1435;
+        border: 1px solid #155ff2;
+        
+        .ivu-select-item{
+            color: #fff;
+            font-size: 14px !important;
+            &.ivu-select-item-selected{
+                background: #155ff2;
+            }
+            &:hover{
+                background: #155ff2;
+                
+            }
+
+        }
+    }
+}
+.cargoupload {
+    .ivu-tabs-nav {
+        .ivu-tabs-tab {
+            width: 300px;
+        }
+    }
+   
+}
+.bigImg {
+    .ivu-modal-footer {
+        display: none
+    }
+}
+    
+.customPage{
+    margin-top: 1rem;
+    .ivu-page-item-active{
+        background: #155ff2;
+        
+        >a{
+            color: #fff;
+
+        }
+    }
+    &.noMargin{
+        margin-top: 0;
+    }
+    .ivu-page-total{
+        color: #fff;
+    }
+}
+.customModal{
+    .ivu-modal-content{
+        background: #121e4f;
+    }
+}
+.loginmodal{
+    .ivu-modal-content{
+        background-color:rgba(225,225,225,0);
+        box-shadow: 0 0 0 rgba(255,255,255,0)
+    }
+}
+.customRadio{
+    .ivu-radio-wrapper-checked{
+        .ivu-radio-disabled .ivu-radio-inner{
+            border-color:#2d8cf0;
+            background-color:#2d8cf0;
+        }
+
+    }
+    
+}
+.customBtn.ivu-btn-primary{
+    background-color: transparent;
+    border-color: #fff;
+
+    &.active,&:hover{
+        background-color: #155ff2;
+        border-color: #155ff2;
+
+    }
+}
+.ivu-radio-group[custom='customRadio']{
+    font-size: 14px;
+    display: flex;
+    justify-content: space-around;
+    .ivu-radio-inner{
+        background: transparent;
+        border-color: #fff;
+        &::after{
+            background-color: #fff;
+        }
+    }
+
+}
+.toolTop{
+    position: fixed;
+    width: 350px;
+   
+    background: #010d3c;
+    color: #fff;
+    border: 1px solid #155ff1;
+    h2{
+        display: flex;
+        >div{
+            width:15%;
+            padding: 10px 0;
+            background: #2c71f0;
+            &:first-child{
+                text-align: center;
+            }
+            &:nth-child(2){
+                width: 65%;
+                padding-left: 20px;
+                background: rgb(13, 51, 128);
+            }            
+            &:last-child{
+                width: 20%;
+               text-align: center;
+               font-size: 24px;
+               padding: 5px 0 0 0;
+                background: rgb(13, 51, 128);
+                cursor: pointer;
+            }
+            
+        }
+    }
+    >div:not(.divRecord){
+
+        display: flex;
+       
+        >ul:first-child{
+            width: 35%;
+            text-align: right;
+            
+        }
+        >ul{
+           
+            
+            li{
+                font-size: 16px;
+                padding: 6px 0;
+            }
+            &:last-child{
+                 width: 65%;
+            text-align: left;
+                color: #ffffff;
+                padding-left: 10px;
+            }
+
+        }
+    }
+    ul{
+        list-style: none;
+    }
+    
+    .divRecord {
+        background: rgba(78, 78, 78, 0.3);
+        hr {
+            opacity: 0.3;
+            width: 90%;
+            margin: 0 auto;
+            border-left: none;
+            border-right: none;
+        }
+        .list{
+            font-size:14px;
+            padding: 0 5%;        
+            p{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0 5px 0;
+                &:first-child{
+                    img{
+                        width: 20px;
+                        height: 20px;
+                        display: inline-block !important;
+                        margin-right:5px; 
+                        margin-top: 0;
+                    }
+                    span:first-child{
+                        display: flex;
+                        align-items: center;
+                        vertical-align: middle;
+                    }
+                    span:last-child{
+                        color: #FFB73E;
+                        cursor: pointer;
+                    }
+    
+                }
+                &:last-child {
+                    color: #999999;
+                    margin-left: 25px
+                }
+            }
+        }
+    }
+    
+   
+}
+.customRadioGroup{
+    label:first-child{
+        position: relative;
+        margin-bottom: 30px;
+        &::after{
+            content: '';
+            position: absolute;
+            width: 1px;
+            background: #0037B2;
+            height: 30px;
+            bottom: -30px;
+            left: 8px;
+        }
+    }
+    .ivu-radio-checked{
+        .ivu-radio-inner {
+            // background-color:#0037B2;
+            border-color: #00BAE5 !important;
+            &::after{
+                background-color: #00BAE5;
+
+            }
+        }
+
+
+    }
+    .ivu-radio:hover .ivu-radio-inner{
+        border-color:#0037B2; 
+
+    }
+    .ivu-radio-inner{
+        background: transparent !important;
+        border-color:#0037B2; 
+        &::after{
+            transform: scale(1);
+            opacity:1;
+            background: transparent;
+            border:1px solid #0037B2; 
+
+        }
+        
+    }
+
+}
+.ivu-btn-primary {
+    background-color:#1f5ff2;
+    border-color: #1f5ff2;
+}
+.goods-list-enter {
+    .ivu-form-item {
+        margin-bottom: 10px;
+    }
+}

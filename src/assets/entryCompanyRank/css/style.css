@@ -1,0 +1,214 @@
+html,
+body,#app {
+	position: relative !important;
+	height: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	font-family: MicrosoftYaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+	background-repeat: repeat;
+	background-attachment: fixed;
+	background-image: url(../images/hug-bg.png);
+}
+ul,li,p,h1,h2,h3,h4,h5,h6 {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+a { text-decoration: none;}
+ .hug-body-index:after {
+	width: 100%;
+	height: 208px;
+	background-repeat: repeat;
+	background-image: url(../images/hug-bg-bot.png);
+	display: block;
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 60px;
+} 
+.hug-wrap {
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+.hug-body-index .hug-wrap {
+	height: 770px;
+	/* position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -610px;
+	margin-top: -320px; */
+	margin:0 auto;
+}
+.hug-body-index .swiper-container {
+	width: 100%;
+	height: 770px;
+	padding: 50px 0 110px;
+	box-sizing: border-box;
+}
+
+.swiper-slide {
+	text-align: left;
+	font-size: 18px;
+	background: #fff;
+	border-radius:20px;
+	box-shadow: inset 0 0 40px rgba(0, 23, 199, 0.5);
+}
+.hug-body-index .swiper-slide:after {
+	width: 100%;
+	height: 184px;
+	background-repeat: no-repeat;
+	background-image: url(../images/hug-bg-side.png);
+	background-size: contain;
+	display: block;
+	content: '';
+	position: absolute;
+	bottom: -184px;
+	left: 0;
+	z-index: 10;
+}
+.swiper-button-next, .swiper-button-prev {
+	width: 100px;
+	height: 100px;
+	margin-top: -110px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.swiper-button-next:focus, .swiper-button-prev:focus {
+	border-width: 0;
+	--swiper-theme-color: none;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+	display: none;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+	right: -130px;
+	background-image: url(../images/hug-left.png);
+	
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+	left: -130px;
+	background-image: url(../images/hug-right.png);
+}
+
+.swiper-slide h4 {
+	width: 100%;
+	height: 92px;
+	line-height: 76px;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-repeat: no-repeat;
+	background-image: url(../images/hug-tit02.png);
+	background-size: contain;
+	background-position: center center;
+	margin-top: -40px;
+ }
+.swiper-slide ul {
+	width: 300px;
+	margin: 0 auto;
+	height: 90%;
+
+}
+.swiper-slide ul li {
+	/* position: relative; */
+	 padding-left: 10px; 
+	/* line-height: 29px; */
+	height: 5%;		
+}
+.swiper-slide ul li a {
+
+	
+}
+.swiper-slide ul li span {
+	/* position: absolute;
+	left: 0;
+	top: 0; */
+	font-size: 14px;
+	font-weight: bold;
+	color: #E74A3A;
+	
+	display: inline-block;
+	width: 4em;
+	
+}
+.ivu-tooltip{
+	width: 100% !important;	
+	height:75% !important;
+}
+.ivu-tooltip-rel{
+	height: 100% !important;
+}
+.swiper-slide ul li  p {
+	
+	width: 100% ;	
+	display: inline-block;
+	margin-bottom: 0%;
+	font-size: 14px;	
+	color: #121E4F !important;
+	white-space: nowrap !important;
+	text-overflow: ellipsis !important;
+	overflow: hidden !important;
+}
+
+.hug-footer {
+	width:100%;
+	height:60px;
+	line-height: 60px;
+	color: #4F5E9E;
+	font-size: 14px;
+	text-align: center;
+	background:#0E1943;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.hug-body-content .swiper-wrapper {
+	display: block;
+}
+.hug-body-content .swiper-container {
+	padding: 60px 0;
+}
+.hug-body-content .swiper-slide {
+	height: auto;
+	margin-bottom: 60px;
+}
+.hug-body-content .swiper-slide h4 {
+	float: left;
+	width: 424px;
+	margin-left: 35px;
+	background-image: url(../images/hug-tit03.png);
+}
+.hug-body-content .swiper-slide h4 i {
+	color: #FFA800;
+	padding: 0 5px;
+	letter-spacing: 4px;
+	font-weight: bold;
+}
+.hug-body-content ul {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0 10px 30px 45px;
+}
+.hug-body-content ul:after, .hug-body-content ul:before {
+    content: '';
+    display: block;
+    clear: both;
+}
+.hug-body-content ul li {
+	width: 25%;
+	float: left;
+	/* padding: 0 20px 0 70px; */
+	box-sizing: border-box;
+}
+.hug-body-content .hug-footer {
+	position: fixed;
+	bottom: 0px;
+	z-index: 1;
+}

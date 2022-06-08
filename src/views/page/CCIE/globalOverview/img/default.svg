@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="13px" viewBox="0 0 8 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>default</title>
+    <desc>Created with Sketch.</desc>
+    <g id="切图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02-总体情况-展会概况-具体" transform="translate(-191.000000, -467.000000)">
+            <g id="Cursor" transform="translate(191.000000, 467.000000)">
+                <g id="default">
+                    <polygon id="cursor" fill="#FFFFFF" points="0 10.7890526 0 0 7.72733333 7.82753684 3.20666667 7.82753684 2.93266667 7.91107368"></polygon>
+                    <polygon id="cursor" fill="#FFFFFF" points="6.05633333 11.2433179 3.653 12.2774232 0.531666667 4.80693895 2.989 3.76070737"></polygon>
+                    <polygon id="cursor" fill="#000000" points="5.16733333 10.7847411 3.938 11.3061726 1.87133333 6.33842526 3.09866667 5.81632"></polygon>
+                    <polygon id="cursor" fill="#000000" points="0.666666667 1.62162526 0.666666667 9.15880421 2.646 7.22802526 2.93133333 7.13438316 6.11 7.13438316"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

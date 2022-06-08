@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="319px" height="16px" viewBox="0 0 319 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>编组</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01-登录状态" transform="translate(-800.000000, -302.000000)">
+            <g id="登录框" transform="translate(1.000000, 0.000000)">
+                <g id="sign-in-" transform="translate(737.000000, 302.000000)">
+                    <g id="log-background" transform="translate(0.000000, 0.000000)">
+                        <g id="分组-5" transform="translate(62.000000, 0.000000)">
+                            <g id="编组">
+                                <polygon id="矩形" fill="#1F5FF2" points="75.6629413 1.13686838e-13 243.892673 0 252.555614 8 67 8"></polygon>
+                                <path d="M248,8 L256.648877,7.40740802e-13 L260.887774,7.40740802e-13 L252.224833,8 L248,8 Z M256,8 L264.648877,7.40740802e-13 L268.887774,7.40740802e-13 L260.224833,8 L256,8 Z M264,8 L272.648877,7.40740802e-13 L276.887774,7.40740802e-13 L268.224833,8 L264,8 Z M272,8 L280.648877,7.40740802e-13 L284.887774,7.40740802e-13 L276.224833,8 L272,8 Z" id="合并形状-copy-3" fill="#1F5FF2" transform="translate(266.443887, 4.000000) scale(-1, 1) translate(-266.443887, -4.000000) "></path>
+                                <path d="M35,8 L43.6488773,6.55475674e-13 L47.8877742,6.55475674e-13 L39.2248329,8 L35,8 Z M43,8 L51.6488773,6.55475674e-13 L55.8877742,6.55475674e-13 L47.2248329,8 L43,8 Z M51,8 L59.6488773,6.55475674e-13 L63.8877742,6.55475674e-13 L55.2248329,8 L51,8 Z M59,8 L67.6488773,6.55475674e-13 L71.8877742,6.55475674e-13 L63.2248329,8 L59,8 Z" id="合并形状-copy-4" fill="#1F5FF2"></path>
+                                <g id="分组-4" transform="translate(249.000000, 6.000000)">
+                                    <polyline id="路径" stroke="#1F5FF2" transform="translate(33.289814, 4.000000) scale(1, -1) translate(-33.289814, -4.000000) " points="9.09494702e-13 8 8.66294128 2.27373675e-13 66.5796279 0"></polyline>
+                                    <circle id="椭圆形" fill="#1F5FF2" cx="68" cy="8" r="2"></circle>
+                                </g>
+                                <g id="分组-4-copy" transform="translate(35.000000, 11.000000) scale(-1, 1) translate(-35.000000, -11.000000) translate(0.000000, 6.000000)">
+                                    <polyline id="路径" stroke="#1F5FF2" transform="translate(33.289814, 4.000000) scale(1, -1) translate(-33.289814, -4.000000) " points="9.09494702e-13 8 8.66294128 2.27373675e-13 66.5796279 0"></polyline>
+                                    <circle id="椭圆形" fill="#1F5FF2" cx="68" cy="8" r="2"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,103 @@
+<template>
+    <queryComponent pageName='分舱单(FHL)' :keyValue="tableList" :httpListUrl='listUrl' :httpDetailUrl='detailUrl' :tableHeader='tableHead' :childTable='tableChild' /> 
+</template>
+<script>
+import queryComponent from '_c/airQueryComponent'
+import interfaceUrl from '@/api/interfaceUrl'
+export default {
+    components:{queryComponent},
+    beforeMount(){
+        this.listUrl=interfaceUrl.queryFhlListByBillno
+        this.detailUrl=interfaceUrl.queryFhlAllByMsgid
+    },
+    data(){
+        return{
+            listUrl:'',
+            detailUrl:'',
+            //主表字段
+            tableList:[
+                // {key:"bill_no",value:'提运单号'},
+                {key:"createtime",value:'报文传输时间'},
+                {key:"weight",value:'重量'},
+                {key:"numberpieces",value:'件数'},
+                {key:"shipmentdescrcode",value:'货物描述代码'},
+                {key:"destcode",value:'航空/城市代码（目的地）'},
+                {key:"origincode",value:'航空/城市代码（出发地）'},
+                {key:'billno',value:'主运单号'}
+            ],
+            //子表字段
+            tableChild:[
+                {key:'shippercontactid',value:'联系人标识'},
+                {key:'shippercontactnum',value:'联系人电话'},
+                {key:'fhlHousewaybillsummarydetails',value:'子表'},
+                {key:'houselineid',value:'行标识符'},
+                {key:'hwbserialnumber',value:'HWB序列号'},
+                {key:'houseorigincode',value:'航空/城市代码（出发地）'},
+                {key:'housedestcode',value:'航空/城市代码（目的地）'},
+                {key:'housenumberpieces',value:'件数'},
+                {key:'houseweightcode',value:'重量代码'},
+                {key:'houseweight',value:'重量'},
+                {key:'houseslac',value:'SLAC'},
+                {key:'housemanifestdescriptiongoods',value:'货物清单描述'},
+                {key:'househandlingrequirements',value:'特殊处理代码'},
+                {key:'fhlHarmonised',value:'子表'},
+                {key:'harmonisedlineid',value:'行标识符'},
+                {key:'commoditycode',value:'统一商品编码'},
+                {key:'fhlFreetext',value:'子表'},
+                {key:'freetextlineid',value:'行标识符'},
+                {key:'freetext',value:'自由文本'},
+                {key:'fhlContactdetail',value:'子表'},
+                {key:'contactid',value:'联系人标识'},
+                {key:'contactnum',value:'联系人电话'},
+                {key:'fhlControlinformationbean',value:'子表'},
+                {key:'ocilineid',value:'行标识符'},
+                {key:'countrycode',value:'ISO国家代码'},
+                {key:'informationid',value:'信息标识符'},
+                {key:'csandrcinfoid',value:'海关、保安、管制信息标识符'},
+                {key:'csandrcinfo',value:'补充海关、保安和管制信息'}
+            ],
+            //详情字段
+            tableHead:[
+                {key:'msgid',value:'主消息编号'},
+                {key:'messageidentification',value:'标准信息标识符'},
+                {key:'messagetypeversionnum',value:'信息类型版本号'},
+                {key:'lineid',value:'行标识符'},
+                {key:'airlineprefix',value:'航空公司前缀'},
+                {key:'awbserialnumber',value:'AWB序列号'},
+                {key:'origincode',value:'航空/城市代码（出发地）'},
+                {key:'destcode',value:'航空/城市代码（目的地）'},
+                {key:'shipmentdescrcode',value:'货物描述代码'},
+                {key:'numberpieces',value:'件数'},
+                {key:'weightcode',value:'重量代码'},
+                {key:'weight',value:'重量'},
+                {key:'shipperlineid',value:'行标识符'},
+                {key:'shippername',value:'发货人名称，可以有多个用“&||&”隔开'},
+                {key:'shipperaddress',value:'街道地址'},
+                {key:'shipperplace',value:'位置'},
+                {key:'shipperstateprovince',value:'市/省'},
+                {key:'shippercountrycode',value:'ISO国家代码'},
+                {key:'shipperpostcode',value:'邮政编码'},
+                {key:'consigneelineid',value:'线路标识符'},
+                {key:'consigneename',value:'姓名'},
+                {key:'consigneeaddress',value:'街道地址'},
+                {key:'consigneeplace',value:'位置'},
+                {key:'consigneestateprovince',value:'市/省'},
+                {key:'consigneecountrycode',value:'ISO国家代码'},
+                {key:'consigneepostcode',value:'邮政编码'},
+                {key:'chargecurrencycode',value:'ISO货币代码'},
+                {key:'chargeweightorvaluation',value:'货到付款（重量/价格）'},
+                {key:'chargeothercharges',value:'货到付款（其他收费）'},
+                {key:'chargev4carrideclarations',value:'公开的运价'},
+                {key:'chargev4custdeclarations',value:'海关申报价格'},
+                {key:'chargev4insurdeclarations',value:'申报的保费'},
+                {key:'createtime',value:'报文传输时间'}
+            ]
+
+        }
+    }
+}
+</script>
+<style lang="scss" scoped>
+
+
+</style>
